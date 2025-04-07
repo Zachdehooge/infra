@@ -1,0 +1,12 @@
+name: Docker Image Security
+description: ''
+runs:
+  using: composite
+  steps:
+  - name: Trivy Scan
+    shell: bash
+    run: |
+      myvars=$(git config --local remote.origin.url|sed -n 's#.*/\([^.]*\)\.git#\1#p')
+      curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sudo sh -s -- -b /usr/local/bin v0.58.2
+      docker pull {secrets.docker_username}/$myvars
+      trivy image {secrets.docker_username}/$myvars:latest

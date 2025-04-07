@@ -1,0 +1,10 @@
+name: Docker Build
+description: ''
+runs:
+  using: composite
+  steps:
+  - name: Build Docker image
+    shell: bash
+    run: |
+      myvars=$(git config --local remote.origin.url|sed -n 's#.*/\([^.]*\)\.git#\1#p')
+      docker build -t $myvars/latest .

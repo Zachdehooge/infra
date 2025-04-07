@@ -1,0 +1,8 @@
+name: Checkout PR Code
+description: ''
+runs:
+  using: composite
+  steps:
+  - name: Checkout PR Code
+    if: github.ref == 'refs/heads/main'
+    uses: actions/checkout@v3
