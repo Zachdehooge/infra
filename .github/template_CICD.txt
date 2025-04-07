@@ -1,0 +1,23 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  job:
+    name: Test
+        runs-on: ubuntu-22.04
+        steps:
+        - name: Check out source repository
+        uses: zachdehooge/infra/.github/actions/checkout@master
+        - name: Install Go
+        uses: zachdehooge/infra/.github/actions/install-go@master
+        - name: Install Taskfile
+        uses: zachdehooge/infra/.github/actions/install-taskfile@master
+        - name: test
+        run: task test
