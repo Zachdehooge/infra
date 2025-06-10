@@ -1,6 +1,13 @@
 version: '3'
 services:
   prometheus:
+    image: prom/node-exporter
+    ports:
+      - "9100:9100"
+    volumes:
+      - ./mac_prometheus.yml:/etc/prometheus/prometheus.yml
+
+  node:
     image: prom/prometheus
     ports:
       - "9090:9090"
