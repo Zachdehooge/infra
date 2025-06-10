@@ -172,7 +172,7 @@
               }
             ]
           },
-          "unit": "bytes"
+          "unit": "percent"
         },
         "overrides": [
           {
@@ -230,7 +230,7 @@
           },
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "windows_cs_physical_memory_bytes - windows_memory_available_bytes",
+          "expr": "100 * (1 - (windows_os_physical_memory_free_bytes / windows_cs_physical_memory_bytes))",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "__auto",
@@ -244,19 +244,19 @@
     }
   ],
   "preload": false,
-  "refresh": "5s",
+  "refresh": "10s",
   "schemaVersion": 41,
   "tags": [],
   "templating": {
     "list": []
   },
   "time": {
-    "from": "now-5m",
+    "from": "now-30m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "browser",
   "title": "Windows Usage",
   "uid": "ceoji5tvyhkhsf",
-  "version": 6
+  "version": 7
 }
