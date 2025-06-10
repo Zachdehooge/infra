@@ -5,14 +5,14 @@ services:
     ports:
       - "9100:9100"
     volumes:
-      - ./mac_prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
 
   node:
     image: prom/prometheus
     ports:
       - "9090:9090"
     volumes:
-      - ./mac_prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
 
   grafana:
     image: grafana/grafana
